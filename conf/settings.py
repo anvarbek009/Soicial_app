@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'phonenumbers',
     'twilio',
+    'post'
 
 ]
 
@@ -111,7 +113,7 @@ SIMPLE_JWT = {
 }
 
 
-ROOT_URLCONF = "social.urls"
+ROOT_URLCONF = "conf.urls"
 
 TEMPLATES = [
     {
@@ -129,7 +131,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "social.wsgi.application"
+WSGI_APPLICATION = "conf.wsgi.application"
 
 
 # Database
@@ -187,3 +189,7 @@ AUTH_USER_MODEL = 'users.User'
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
